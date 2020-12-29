@@ -2,6 +2,7 @@ package com.itheima.test;
 
 import com.itheima.domain.Account;
 import com.itheima.service.IAccountService;
+import com.itheima.service.impl.AccountServiceImpl_OLD;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,12 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:bean.xml")
 public class AccountServiceTest {
-
     @Autowired
-//    @Qualifier("proxyAccountService")
-    private IAccountService accountService;
+    @Qualifier("proxyAccountService")
+    private  IAccountService as;
 
     @Test
-    public void testTransfer(){
-        accountService.transfer("aaa","bbb",100f);
-        System.out.println(accountService.findAllAccount());
+    public  void testTransfer(){
+        as.transfer("aaa","bbb",100f);
     }
 }
